@@ -126,7 +126,39 @@ def decbase64():
     
     print(f"Base64 Encoded String: {text}")
 
+# Function to encode text to Base85
+def encbase85():
+    print("")
+    text = str(input('Enter Value to Encode: '))
 
+    # Convert the input string to bytes
+    textbyte = text.encode('utf-8')
+
+    # Encode the byte string to Base85
+    base85byte = base64.b85encode(textbyte)
+
+    # Convert the Base85 bytes back to a string
+    base85string = base85byte.decode('utf-8')
+
+    print(f"Base85 Encoded String: {base85string}")
+
+
+# Function to decode Base85 encoded string back to original text
+def decbase85():
+    print("")
+    base85string = str(input('Enter Base85 Encoded Value to Decode: '))
+
+    # Convert the Base85 encoded string to bytes
+    base85byte = base85string.encode('utf-8')
+
+    # Decode the Base85 bytes back to the original byte string
+    textbyte = base64.b85decode(base85byte)
+
+    # Convert the byte string back to a regular string
+    text = textbyte.decode('utf-8')
+
+    print(f"Decoded String: {text}")
+    
 def print_menu ():
     print("")
     print("What would you like to do:")
@@ -138,8 +170,10 @@ def print_menu ():
     print("[4] Convert Binary to Hexadecimal")
     print("[5] Convert Hexadecimal to Decimal")
     print("[6] Convert Decimal to Hexadecimal")
-    print("[7] Encode Base64")
+    print("[7] Encode to Base64")
     print("[8] Decode Base64")
+    print("[9] Encode to Base85")
+    print("[10] Decode Base85")
     print("[0] Enter 0 to exit")
     print("")
     handle_input()
@@ -169,6 +203,12 @@ def handle_input():
         
     elif user_choice == 8:
         decbase64()
+        
+    elif user_choice == 9:
+        encbase85()
+        
+    elif user_choice == 10:
+        decbase85()
         
     elif user_choice == 0:
         print('Thank you for using Inside Out!')
